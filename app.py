@@ -23,12 +23,12 @@ instructions = tk.Label(root, text="THIS IS MY VERY COOL CS PRINCIPLES PROJECT",
 instructions.grid(columnspan=3, column=0, row=1)
 
 def open_file():
-    browse_text.set("CRAZY PEOPLE IN 3RD PERIOD")
-    file = askopenfile(parent=root, mode='rb', title="PLEASE OPEN A FILE MAN", filetypes=[("Pdf file", "*.pdf")])
+    browse_text.set("PDF FILE")
+    file = askopenfile(parent=root, mode='rb', title="PDF FILE", filetypes=[("Pdf file", "*.pdf")])
     if file:
-        read_pdf = PyPDF2.PdfFileReader(file)
-        page = read_pdf.getPage(0)
-        page_content = page.extractText()
+        read_pdf = PyPDF2.PdfReader(file)
+        page = read_pdf.pages[0]
+        page_content = page.extract_text()
 
         #text box
         text_box = tk.Text(root, height=10, width=50, padx=15, pady=15)
